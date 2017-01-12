@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>class & style</title>
+</head>
+<style>
+    .active {background-color:red;}
+    .normal {background-color: blue;}
+    #show {width:100px;height: 100px;}
+</style>
+<body>
+    <div id="demo1">
+        <div id="show" v-bind:class="{active:isActive}"></div>
+        <button v-on:click="withinActive">within active</button>
+        <button v-on:click="withoutActive">without active</button>
+    </div>
+    <script src="//lib.baomitu.com/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript">
+    var demo1 = new Vue({
+        el:'#demo1',
+        data:{
+            isActive:true
+        },
+        methods:{
+            withinActive:function(){
+                return this.isActive = true;
+            },
+            withoutActive:function() {
+                return this.isActive = false;
+            }
+        }
+    });
+    </script>
+</body>
+</html>

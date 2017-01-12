@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld!--vue.js</title>
+</head>
+<body>
+    <!-- 用id绑定元素操作 msg1 -->
+    <div id="app1">{{msg1}}</div>
+    <hr>
+
+    <!-- 绑定DOM元素属性 -->
+    <div id="app2">
+      <span v-bind:title="msg2">
+        Hover your mouse over me for a few seconds to see my dynamically bound title!
+      </span>
+    </div>
+    <hr>
+    
+    <!-- v-if属性对元素进行逻辑判断 -->
+    <div id="logic">
+        <span v-if="logic">1</span>
+    </div>
+    <hr>
+    
+    <!-- v-for 循环遍历 -->
+    <div id="for">
+        <ol>
+            <li v-for="item in items">{{item.text}}</li>
+        </ol>
+    </div>
+    <hr>
+    
+    <!-- operation input 1 -->
+    <div id="app3">
+    <p>{{msg3}}</p>
+    <button v-on:click="reverseMsg">reverseMsg</button>
+    </div>
+    <hr>
+
+    <!-- form input -->
+    <div id="app4">
+        <p>password is: {{msg4}}</p>
+        <input type="password" v-model="msg4">
+    </div>
+    <hr>
+
+    <!-- component组件定义 -->
+    <div id="app5">
+        <ol>
+            <todo v-for="data in todoList" v-bind:todo="data"></todo>
+        </ol>
+    </div>
+    
+    <script src="http://vuejs.org/js/vue.js"></script>
+    <script type="text/javascript">
+    var app1 = new Vue({
+        el:'#app1',
+        data:{
+            msg1:'HelloWorld 1! --vue.js'
+        }
+    });
+
+    var app2 = new Vue({
+        el:'#app2',
+        data:{
+            msg2:'HelloWorld 2! --vue.js'
+        }
+    });
+
+    var logic = new Vue({
+        el:'#logic',
+        data:{
+            logic:true
+        }
+    });
+
+    var item = new  Vue({
+        el:'#for',
+        data:{
+            items:[
+                {text:'Hello World!'},
+                {text:'Hello Vue!'}
+            ]
+        }
+    });
+    item.items.push({text:'Test'});
+
+    var app3 = new Vue({
+        el:'#app3',
+        data:{
+            msg3:'This is a Message'
+        },
+        methods:{
+            reverseMsg:function(){
+                this.msg3 = this.msg3.split('').reverse().join('');
+            }
+        }
+    });
+
+    var app4 = new Vue({
+        el:'#app4',
+        data:{
+            msg4:'Hello World!'
+        }
+    });
+
+    // component
+    Vue.component('todo', {
+        props:['todo'],
+        template:'<li>{{todo.text}}</li>'
+    });
+    var app5 = new Vue({
+        el:'#app5',
+        data:{
+            todoList:[
+                {text:'Hello World!'},
+                {text:'Hello Vue!'},
+                {text:'Hello Component!'}
+            ]
+        }
+    });
+    </script>
+</body>
+</html>

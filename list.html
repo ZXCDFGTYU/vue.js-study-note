@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list 列表循环--vue.js</title>
+</head>
+<body>
+    <div id="list1">
+        <ul>
+            <li v-for="item in items">{{item.msg}}</li>
+        </ul>
+    </div>
+    <hr>
+
+    <div id="list2">
+        <ul>
+            <li v-for="(item,index) in items">{{parent}} - {{index+1}} - {{item.msg}}</li>
+        </ul>
+    </div>
+    <hr>
+
+    <div id="list3">
+        <ul>
+            <template v-for="item in items">
+                <li>{{item.msg}}</li>
+            </template>
+        </ul>
+    </div>
+    <hr>
+
+    <div id="list4">
+        <ul>
+            <li v-for="(val,key,index) in obj">{{key}}: {{val}} - {{index}}</li>
+        </ul>
+    </div>
+    <hr>
+
+    <div id="list5">
+        <ul>
+            <li v-for="num in 10">{{num}}</li>
+        </ul>
+    </div>
+    <script src="//lib.baomitu.com/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript">
+    var list1 = new Vue({
+        el:'#list1',
+        data:{
+            items:[
+                {msg:'hello world!'},
+                {msg:'hello vue!'},
+                {msg:'hello list!'}
+            ]
+        }
+    });
+
+    var list2 = new Vue({
+        el: '#list2',
+        data:{
+            parent:'Parent',
+            items:[
+                {msg:'hello world!'},
+                {msg:'hello vue!'},
+                {msg:'hello list!'}
+            ]
+        }
+    });
+
+    var list3 = new Vue({
+        el:'#list3',
+        data:{
+            items:[
+                {msg:'hello world!'},
+                {msg:'hello vue!'},
+                {msg:'hello list!'}
+            ]
+        }
+    });
+
+    var list4 = new Vue({
+        el:'#list4',
+        data:{
+            obj:{
+                'first-name':'aaa',
+                'last-name':'bbb'
+            }
+        }
+    });
+
+    var list5 = new Vue({
+        el:'#list5'
+    });
+    </script>
+</body>
+</html>

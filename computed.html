@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Computed 计算属性 --vue.js</title>
+</head>
+<body>
+    <!-- 计算属性 BASE DEMO -->
+    <div id="computed1">
+        <p>original: {{msg1}}</p>
+        <p>computed reversed: {{msg11}}</p>
+        <p>{{now}}</p>
+    </div>
+
+    <div id="watch">
+        <input type="text" v-model="question" place-holder="type your question">
+        <span v-html="answer">{{answer}}</span>
+    </div>
+    <script src="//lib.baomitu.com/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript">
+    var computed1 = new Vue({
+        el:'#computed1',
+        data:{
+            msg1:'original',
+            now1:Date.now()
+        },
+        computed:{
+            msg11:function(){
+                return this.msg1.split('').reverse().join('');
+            },
+            now:function(){ // 计算属性缓存
+                return Date.now();
+            }
+        }
+    });
+
+    var watch = new Vue({
+        el:'#watch',
+        data:{
+            question:'',
+            answer:'waiting input'
+        },
+        watch: {
+            question:function(nd){
+                this.answer = nd;
+            }
+        }
+    });
+    </script>
+</body>
+</html>

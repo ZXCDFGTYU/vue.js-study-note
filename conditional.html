@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+    <div id="condition1">
+        <h1 v-if="cond1">true</h1>
+        <h1 v-else>false</h1>
+        <button v-on:click="cStatus(1)">true</button>
+        <button v-on:click="cStatus(0)">false</button>
+    </div>
+    <hr>
+    <div id="condition2">
+        <template v-if="cond2">
+            <h1>true</h1>
+            <h2>true</h2>
+            <h3>true</h3>
+        </template>
+        <template v-else>
+            <h1>false</h1>
+            <h2>false</h2>
+            <h3>false</h3>
+        </template>
+        <button v-on:click="cStatus(1)">true</button>
+        <button v-on:click="cStatus(0)">false</button>
+    </div>
+    <hr>
+    <div id="condition3">
+        <div v-if="cond3===1">1</div>
+        <div v-else-if="cond3===2">2</div>
+        <div v-else>3</div>
+        <button v-on:click="cNum(1)">1</button>
+        <button v-on:click="cNum(2)">2</button>
+        <button v-on:click="cNum(Math.random())">{{Math.random()}}</button>
+    </div>
+    <hr>
+    <div id="condition4">
+        <template v-if="cond4">
+            <label for="username-input">UserName</label>
+            <input type="text" id="username-input" placeholder="username" key="username">
+            <input type="password" placeholder="password" key="username">
+        </template>
+        <template v-else>
+            <label for="username-input">email</label>
+            <input type="text" id="email-input" placeholder="email" key="email">
+            <input type="password" placeholder="password" key="email">
+        </template>
+        <button v-on:click="change">change</button>
+    </div>
+    <script src="//lib.baomitu.com/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript">
+        var demo1 = new Vue({
+            el:'#condition1',
+            data:{
+                cond1:true
+            },
+            methods:{
+                cStatus:function(s){
+                    return this.cond1 = parseInt(s);
+                }
+            }
+        });
+
+        var demo2 = new Vue({
+            el:'#condition2',
+            data:{
+                cond2:true
+            },
+            methods:{
+                cStatus:function(s){
+                    return this.cond2 = parseInt(s);
+                }
+            }
+        });
+
+        var demo3 = new Vue({
+            el:'#condition3',
+            data:{
+                cond3:1
+            },
+            methods:{
+                cNum:function(num){
+                    return this.cond3 = num;
+                }
+            }
+        });
+
+        var demo4 = new Vue({
+            el:'#condition4',
+            data:{
+                cond4:true
+            },
+            methods:{
+                change:function(){
+                    return this.cond4 = !this.cond4;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

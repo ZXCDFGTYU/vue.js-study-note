@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>prop</title>
+</head>
+<body>
+    <!-- 文本value输出，数值改变value改变 -->
+    <div id="text">text: {{text}}</div>
+    <!-- 一次性输出，数值改变value不变 -->
+    <div id="once" v-once>{{data1}}</div>
+    <!-- HTML输出 -->
+    <div id="html" v-html="data2"></div>
+    <!-- js表达式 三元运算符 -->
+    <div id="pt">{{num?1:0}}</div>
+    <!-- 指令 -->
+    <div id="href">
+        <a v-bind:href="url">baidu.com</a>
+    </div>
+    <!-- event bind -->
+    <div id="event">
+        <a v-on:click="windowShow">show</a>
+    </div>
+
+    <div id="filter">{{filter|rev}}</div>
+
+    <script src="http://vuejs.org/js/vue.js"></script>
+    <script type="text/javascript">
+    var once = new Vue({
+        el:'#once',
+        data:{
+            data1:'assdas'
+        }
+    });
+
+    var html = new Vue({
+        el:'#html',
+        data:{
+            data2:'<h1>qweqweqw</h1>'
+        }
+    });
+
+    var pt = new Vue({
+        el:'#pt',
+        data:{
+            num:false
+        }
+    });
+
+    var href = new Vue({
+        el:'#href',
+        data:{
+            url:'http://baidu.com'
+        }
+    });
+
+    var eventBind = new Vue({
+        el:'#event',
+        methods:{
+            windowShow:function(){
+                alert('WindowShow');
+            }
+        }
+    });
+
+    var filter = new Vue({
+        el:'#filter',
+        data:{
+            filter:'string111'
+        },
+        filters:{
+            rev:function(string){
+                return string.split('').reverse().join('');
+            }
+        }
+    });
+
+    </script>
+</body>
+</html>
