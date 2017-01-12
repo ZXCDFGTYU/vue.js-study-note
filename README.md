@@ -1,1 +1,1 @@
-# vue.js-study-note
+# vue.js每日学习笔记
