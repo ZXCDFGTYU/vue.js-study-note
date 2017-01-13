@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>form bind 表单绑定 --vue.js</title>
+</head>
+<body>
+    <div id="demo1">
+        <input type="text" placeholder="input" v-model="input">
+        <p>your input: {{input}}</p>
+    </div>
+    <hr>
+
+    <div id="demo2">
+        <textarea cols="30" rows="10" v-model="input"></textarea>
+        <p style="white-space:pre">your input:<br>{{input}}</p>
+    </div>
+    <hr>
+
+    <div id="demo3">
+        <input type="checkbox" id="checkbox" v-model="checkbox">
+        <label for="checkbox">{{checkbox}}</label>
+    </div>
+    <hr>
+
+    <div id="demo4">
+        <input type="checkbox" id="c1" value="c1" v-model="checked">
+        <label for="c1">c1</label>
+        <input type="checkbox" id="c2" value="c2" v-model="checked">
+        <label for="c2">c2</label>
+        <input type="checkbox" id="c3" value="c3" v-model="checked">
+        <label for="c3">c3</label>
+        <p>{{checked}}</p>
+    </div>
+    <hr>
+
+    <div id="demo5">
+        <input type="radio" id="p1" value="p1" v-model="picked">
+        <label for="p1">p1</label>
+        <input type="radio" id="p2" value="p2" v-model="picked">
+        <label for="p2">p2</label>
+        <input type="radio" id="p3" value="p3" v-model="picked">
+        <label for="p3">p3</label>
+
+        <p>picked: {{picked}}</p>
+    </div>
+    <hr>
+
+    <div id="demo6">
+        <select v-model="sel">
+            <option value="4">1</option>
+            <option value="5">2</option>
+            <option value="6">3</option>
+        </select>
+        <p>selected: {{sel}}</p>
+    </div>
+    <hr>
+
+    <div id="demo7">
+        <select v-model="sel" multiple>
+            <option value="1">4</option>
+            <option value="2">5</option>
+            <option value="3">6</option>
+        </select>
+        <p>selected: {{sel}}</p>
+    </div>
+    <script src="//lib.baomitu.com/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript">
+    var demo1 = new Vue({
+        el:'#demo1',
+        data:{
+            input:''
+        }
+    });
+
+    var demo2 = new Vue({
+        el:'#demo2',
+        data:{
+            input:''
+        }
+    });
+
+    var demo3 = new Vue({
+        el:'#demo3',
+        data:{
+            checkbox:true
+        }
+    });
+
+    var demo4 = new Vue({
+        el:'#demo4',
+        data:{
+            checked:[]
+        }
+    });
+
+    var demo5 = new Vue({
+        el:'#demo5',
+        data:{
+            picked:'p1'
+        }
+    });
+
+    var demo6 = new Vue({
+        el:'#demo6',
+        data:{
+            sel:5
+        }
+    });
+
+    var demo7 = new Vue({
+        el:'#demo7',
+        data:{
+            sel:[]
+        }
+    });
+    </script>
+</body>
+</html>
