@@ -64,6 +64,28 @@
         </select>
         <p>selected: {{sel}}</p>
     </div>
+    <hr>
+
+    <div id="demo8">
+        <input type="checkbox" v-model="toggle" v-bind:true-value="string1" v-bind:false-value="string0">
+        <input type="radio" v-model="picked" v-bind:value="pick">
+        <select v-model="selected">
+            <option v-bind:value="{string:3}">0</option>
+            <option v-bind:value="{string:4}">1</option>
+            <option v-bind:value="{string:5}">2</option>
+        </select>
+    </div>
+    <hr>
+
+    <div id="demo9">
+        <input type="text" v-model.lazy="msg1">
+        <p>{{msg1}}</p>
+        <input type="text" v-model.number="msg2">
+        <p>{{typeof msg2}}</p>
+        <input type="text" v-model.trim="msg3">
+        <p>{{msg3}}</p>
+    </div>
+
     <script src="//lib.baomitu.com/vue/2.1.8/vue.js"></script>
     <script type="text/javascript">
     var demo1 = new Vue({
@@ -112,6 +134,27 @@
         el:'#demo7',
         data:{
             sel:[]
+        }
+    });
+
+    var demo8 = new Vue({
+        el:'#demo8',
+        data:{
+            toggle:'',
+            picked:'',
+            selected:{},
+            string0:'000',
+            string1:'111',
+            pick:'picked'
+        }
+    });
+
+    var demo9 = new Vue({
+        el:'#demo9',
+        data:{
+            msg1:'',
+            msg2:'',
+            msg3:''
         }
     });
     </script>
